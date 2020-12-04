@@ -1,0 +1,32 @@
+﻿@model Pagina.Models.Pedido
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2 class="titulo subtitulo t-crud">Detalles - Pedido</h2>
+
+<div class="detalles">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Producto.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Producto.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+    </dl>
+</div>
+<p class="detalles">
+    @Html.ActionLink("Editar!", "Edit", new { id = Model.ID }, new { @class = "boton-tabla" })
+</p>

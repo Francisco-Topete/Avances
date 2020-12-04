@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Pagina.Models.Producto>
+
+@{
+    ViewBag.Title = "CRUD";
+}
+
+<h2 class="titulo subtitulo t-crud">Productos!</h2>
+
+<p>
+    @Html.ActionLink("Nuevo...", "Create",null,new { @class="anadir" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Gema.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Tipo.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            Acciones
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gema.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tipo.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class="boton-tabla" }) 
+            @Html.ActionLink("Detalles", "Details", new { id = item.ID }, new { @class = "boton-tabla" }) 
+            @Html.ActionLink("Borrar", "Delete", new { id = item.ID }, new { @class = "boton-tabla" })
+        </td>
+    </tr>
+}
+
+</table>

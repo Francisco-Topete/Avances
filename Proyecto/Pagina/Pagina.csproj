@@ -170,12 +170,29 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GemasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PedidoesController.cs" />
+    <Compile Include="Controllers\ProductoesController.cs" />
+    <Compile Include="Controllers\TipoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202012041906325_InitialCreate.cs" />
+    <Compile Include="Migrations\202012041906325_InitialCreate.Designer.cs">
+      <DependentUpon>202012041906325_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202012042112220_Start.cs" />
+    <Compile Include="Migrations\202012042112220_Start.Designer.cs">
+      <DependentUpon>202012042112220_Start.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Gema.cs" />
+    <Compile Include="Models\Producto.cs" />
+    <Compile Include="Models\Pedido.cs" />
+    <Compile Include="Models\Tipo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -342,6 +359,26 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Tipoes\Create.cshtml" />
+    <Content Include="Views\Tipoes\Delete.cshtml" />
+    <Content Include="Views\Tipoes\Details.cshtml" />
+    <Content Include="Views\Tipoes\Edit.cshtml" />
+    <Content Include="Views\Tipoes\Index.cshtml" />
+    <Content Include="Views\Productoes\Create.cshtml" />
+    <Content Include="Views\Productoes\Delete.cshtml" />
+    <Content Include="Views\Productoes\Details.cshtml" />
+    <Content Include="Views\Productoes\Edit.cshtml" />
+    <Content Include="Views\Productoes\Index.cshtml" />
+    <Content Include="Views\Gemas\Create.cshtml" />
+    <Content Include="Views\Gemas\Delete.cshtml" />
+    <Content Include="Views\Gemas\Details.cshtml" />
+    <Content Include="Views\Gemas\Edit.cshtml" />
+    <Content Include="Views\Gemas\Index.cshtml" />
+    <Content Include="Views\Pedidoes\Create.cshtml" />
+    <Content Include="Views\Pedidoes\Delete.cshtml" />
+    <Content Include="Views\Pedidoes\Details.cshtml" />
+    <Content Include="Views\Pedidoes\Edit.cshtml" />
+    <Content Include="Views\Pedidoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -354,6 +391,14 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202012041906325_InitialCreate.resx">
+      <DependentUpon>202012041906325_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202012042112220_Start.resx">
+      <DependentUpon>202012042112220_Start.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

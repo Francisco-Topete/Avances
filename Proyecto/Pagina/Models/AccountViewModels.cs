@@ -33,7 +33,7 @@ namespace Pagina.Models
         public string Code { get; set; }
         public string ReturnUrl { get; set; }
 
-        [Display(Name = "¿Recordar este explorador?")]
+        [Display(Name = "Recordar Navegador")]
         public bool RememberBrowser { get; set; }
 
         public bool RememberMe { get; set; }
@@ -58,7 +58,7 @@ namespace Pagina.Models
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
-        [Display(Name = "¿Recordar cuenta?")]
+        [Display(Name = "Recuerdame")]
         public bool RememberMe { get; set; }
     }
 

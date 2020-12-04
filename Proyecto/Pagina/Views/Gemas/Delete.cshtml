@@ -1,0 +1,30 @@
+﻿@model Pagina.Models.Gema
+
+@{
+    ViewBag.Title = "Borrar Gema";
+}
+
+<h2 class="titulo subtitulo t-crud">Borrar</h2>
+
+<h3 class="titulo subtitulo">Seguro que quieres borrar esto?</h3>
+<div class="detalles">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="boton-crear" />
+        </div>
+    }
+</div>

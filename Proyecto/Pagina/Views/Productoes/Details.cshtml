@@ -1,0 +1,56 @@
+﻿@model Pagina.Models.Producto
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2 class="titulo subtitulo t-crud">Detalles - Producto</h2>
+
+<div class="detalles">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Gema.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gema.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+    </dl>
+</div>
+<p class="detalles">
+    @Html.ActionLink("Editar!", "Edit", new { id = Model.ID }, new { @class = "boton-tabla" })
+</p>

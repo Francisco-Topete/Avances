@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Pagina.Models.Tipo>
+
+@{
+    ViewBag.Title = "CRUD";
+}
+
+<h2 class="titulo subtitulo">Tipos!</h2>
+
+<p>
+    @Html.ActionLink("Nuevo...", "Create", null, new { @class = "anadir" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            Acciones
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "boton-tabla" })
+            @Html.ActionLink("Detalles", "Details", new { id = item.ID }, new { @class = "boton-tabla" })
+            @Html.ActionLink("Borrar", "Delete", new { id = item.ID }, new { @class = "boton-tabla" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,12 +1,12 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    margin: 0;
+    padding: 0;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -22,3 +22,129 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.navcolor
+{
+    color: white;
+    background-color: firebrick;
+}
+
+.fondo-header {
+    background-image: url(https://goop.com/app/uploads/2016/11/Stocksy_txp05b96a53aaF100_Medium_1035744.jpg);
+    width: 100vw;
+    height: 250px;
+}
+
+.titulo{
+    text-align: center;
+    font-family: 'Segoe UI Light';
+    color: orange;
+    font-size: 90px;
+}
+
+.subtitulo {
+    font-size: 30px;
+}
+
+.t-crud{
+    margin-top: 3%;
+}
+
+table {
+    color: #333;
+    font-family: Helvetica, Arial, sans-serif;
+    width: 640px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-left: 7%;
+}
+
+td, th {
+    border: 1px solid; 
+    border-color: lightgray;
+    height: 30px;
+    transition: all 0.3s; 
+}
+
+th {
+    background-color: firebrick;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+
+tr:nth-child(even) td {
+    background-color: lightsteelblue;
+}
+
+
+tr:nth-child(odd) td {
+    background-color: lightpink;
+}
+
+.anadir 
+{
+    background-image: url(https://image.flaticon.com/icons/png/512/36/36962.png);
+    background-size: cover;
+    display: block;
+    width: 30px;
+    height: 30px;
+    margin-left:49%;
+    text-indent: -9999px;
+}
+
+.boton-tabla{
+    background-color: crimson;
+    padding: 4px;
+    border-color: red;
+    border-width: 2px;
+    border-style: solid;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+    .boton-tabla:hover {
+        transition: 0.5s;
+        background-color: firebrick;
+        border-color: crimson;
+        color: antiquewhite;
+        text-decoration: none;
+    }
+
+.boton-crear {
+    background-color: crimson;
+    padding: 6px;
+    border-color: red;
+    border-width: 2px;
+    border-style: solid;
+    color: white;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+    .boton-crear:hover {
+        transition: 0.5s;
+        background-color: firebrick;
+        border-color: crimson;
+        color: antiquewhite;
+        text-decoration: none;
+    }
+
+.detalles
+{
+    margin-left:25%;
+}
+
+
+
+
+
+

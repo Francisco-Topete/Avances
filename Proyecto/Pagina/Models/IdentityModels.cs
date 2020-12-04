@@ -29,5 +29,10 @@ namespace Pagina.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Tipo> Tipos { get; set; }
+        public DbSet<Producto> Productos { get; set; }
+        public DbSet<Gema> Gemas { get; set; }
+        public DbSet<Pedido> Pedidos { get; set; }
     }
 }

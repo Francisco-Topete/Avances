@@ -1,0 +1,24 @@
+﻿@model Pagina.Models.Tipo
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2 class="titulo subtitulo t-crud">Detalles - Tipo</h2>
+
+<div class="detalles">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p class="detalles">
+    @Html.ActionLink("Editar!", "Edit", new { id = Model.ID }, new { @class = "boton-tabla" })
+</p>
