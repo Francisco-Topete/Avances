@@ -6,9 +6,13 @@
 
 <h2 class="titulo subtitulo t-crud">Productos!</h2>
 
-<p>
-    @Html.ActionLink("Nuevo...", "Create",null,new { @class="anadir" })
-</p>
+@if(User.IsInRole("Administrador"))
+{
+    <p>
+        @Html.ActionLink("Nuevo...", "Create",null,new { @class="anadir" })
+    </p>
+}
+
 <table class="table">
     <tr>
         <th>

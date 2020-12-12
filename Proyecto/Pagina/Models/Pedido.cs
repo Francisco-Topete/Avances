@@ -14,6 +14,7 @@ namespace Pagina.Models
         [Display(Name ="Producto")]
         public int ProductoID { get; set; }
         [ForeignKey("ProductoID")]
+        [Display(Name = "Nombre del Producto")]
         public Producto Producto { get; set; }
 
         public string Total { get; set; }

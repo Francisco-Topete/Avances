@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewBag.Title = "Anadir Roles";
+}
+
+<h2>AddRoles</h2>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <form class="" action="@Url.Action("AddRoles","Roles")" method="post">
+                <div class="form-group">
+                    <label class="col-lg-10">Usuario</label>
+                    <div class="col-lg-10">
+                        <input type="hidden" name="UserId" value="@Model.Id" />
+                        <input class="form-control" name="UserName" type="text" value="@Model.UserName" readonly />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Rol</label>
+                    <div class="col-lg-10">
+                        <select class="form-control" name="UserRol">
+                            <option value="">Seleccione uno</option>
+                            <option value="Administrador">Administrador</option>
+                            <option value="Cliente">Cliente</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="submit" value="Enviar" class="boton-crear" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

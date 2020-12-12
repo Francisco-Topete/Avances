@@ -128,3 +128,6 @@ D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.pdb
 D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.Migrations.InitialCreate.resources
 D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.csproj.GenerateResource.cache
 D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.Migrations.Start.resources
+D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.Migrations.Updated.resources
+D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.Migrations.Updated1.resources
+D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.Migrations.Profile.resources

@@ -28,11 +28,12 @@ namespace Pagina.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Producto producto = db.Productos.Find(id);
+            var producto = db.Productos.Include(p => p.Gema).Include(p => p.Tipo).FirstOrDefault(p => p.ID == id);
             if (producto == null)
             {
                 return HttpNotFound();
             }
+             
             return View(producto);
         }
 
@@ -105,7 +106,7 @@ namespace Pagina.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Producto producto = db.Productos.Find(id);
+            Producto producto = db.Productos.Include(p => p.Gema).Include(p => p.Tipo).FirstOrDefault(p => p.ID == id);
             if (producto == null)
             {
                 return HttpNotFound();

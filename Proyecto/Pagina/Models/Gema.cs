@@ -9,8 +9,9 @@ namespace Pagina.Models
     public class Gema
     {
         public int ID { get; set; }
-        [Display(Name="Gema")]
+        [Display(Name = "Gema")]
         public string Nombre { get; set; }
 
+        public ICollection<Producto> Productos { get; set;}
     }
 }

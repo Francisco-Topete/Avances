@@ -10,7 +10,9 @@ namespace Pagina.Models
     {
         public int ID { get; set; }
         [Required]
-        [Display(Name="Nombre")]
+        [Display(Name="Tipo")]
         public string Nombre { get; set; }
+
+        public ICollection<Producto> Productos { get; set; }
     }
 }

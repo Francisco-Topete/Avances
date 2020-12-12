@@ -1,3 +1,4 @@
+using Pagina.Clases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,14 @@ namespace Pagina
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            this.CheckRoles();
+            Utility.CheckSuperUser();
+        }
+
+        private void CheckRoles()
+        {
+            Utility.CheckRoles("Administrador");
+            Utility.CheckRoles("Cliente");
         }
     }
 }

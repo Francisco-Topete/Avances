@@ -23,23 +23,66 @@ textarea {
     max-width: 280px;
 }
 
+.navbar-logo
+{
+    height: 100px;
+    width: 100px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+    .navbar-logo:hover {
+        filter: hue-rotate(360deg);
+        transition: 1s;
+    }
+
+.navbar-nav li a 
+{
+    line-height: 100px;
+    height: 100px;
+    padding-top: 0;
+} 
+
 .navcolor
 {
     color: white;
-    background-color: firebrick;
+    background-color: goldenrod;
 }
 
 .fondo-header {
-    background-image: url(https://goop.com/app/uploads/2016/11/Stocksy_txp05b96a53aaF100_Medium_1035744.jpg);
+    position: absolute;
+    background-image: url(https://t4.ftcdn.net/jpg/03/50/89/23/360_F_350892364_uqgcFHywAXpwWfhA4Qnjs9KCNT9mnauY.jpg);
+    background-size: cover;
     width: 100vw;
-    height: 250px;
+    height: 400px;
+    filter: blur(5px);
+    z-index: -1;
 }
 
-.titulo{
+.fondo-home{
+    top:525px;
+    position:absolute;
+    z-index:-2;
+}
+
+.titulo {
+    text-align: center;
+    font-family: 'Segoe UI';
+    color: white;
+    font-size: 90px;
+}
+
+.titulo-home {
+    margin-top: 70px;
     text-align: center;
     font-family: 'Segoe UI Light';
-    color: orange;
-    font-size: 90px;
+    color: black;
+    font-size: 50px;
+}
+
+.sitio
+{
+    background-color: rgba(195,195,195,.5);
 }
 
 .subtitulo {
@@ -56,7 +99,6 @@ table {
     width: 640px;
     border-collapse: collapse;
     border-spacing: 0;
-    margin-left: 7%;
 }
 
 td, th {
@@ -143,8 +185,88 @@ tr:nth-child(odd) td {
     margin-left:25%;
 }
 
+.linkcolor {
+    font-family: 'Segoe UI Light';
+    font-size: 22px !important;
+    color: darkslategray !important;
+    display: inline-block;
+    border-radius: 15px;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    transition: 0.3s;
+}
 
+    .linkcolor:hover {
+        transition: 0.3s;
+        background-color: palegoldenrod;
+    }
 
+.no-text-decoration {
+    text-decoration: none;
+    filter: sepia(1);
+    transition: 0.25s;
+}
 
+    .no-text-decoration:hover {
+        text-decoration: none;
+        transition: 0.25s;
+        filter: none;
+    }
 
+.crud-option {
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    border-radius: 100%;
+    background-color: goldenrod;
+}
 
+.crud-title {
+    color: firebrick;
+    font-family: 'Segoe UI';
+    font-weight: bold;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+    .crud-title:hover {
+        text-decoration: none;
+    }
+
+.title-about-us
+{
+    color: black;
+    font-family: 'Segoe UI';
+    font-weight: bolder;
+    font-size: 100px;
+    text-align: center;
+}
+
+.image-about-us
+{
+    border-radius: 20px 0px 0px 20px;
+    margin-left: 50px;
+    margin-right: auto;
+    display: block;
+    width: 600px;
+    height: 500px;
+}
+
+.desct-about-us {
+    font-family: 'Segoe UI';
+    font-weight:bolder;
+    margin-top: 40px;
+    font-size:50px;
+    color: white;
+    text-align: center;
+    color: white;
+}
+
+.desc-about-us {
+    font-family: 'Segoe UI Light';
+    color: white;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}

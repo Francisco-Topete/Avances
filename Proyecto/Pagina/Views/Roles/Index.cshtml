@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Pagina.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Roles";
+}
+
+<h2>Roles</h2>
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-12">
+            <table class="table">
+                <tr>
+                    <td>Lista</td>
+                    <td>Usuario</td>
+                    <td>Email</td>
+                    <td>Añadir</td>
+                </tr>
+
+                @{ 
+                    int Contador = 1;
+                }
+
+                @foreach(var item in Model)
+                {
+                    <tr>
+                        <td>@Contador</td>
+                        <td>@item.UserName</td>
+                        <td>@item.Email</td>
+                        <td><a href="@Url.Action("AddRoles","Roles", new { id=item.Id })">Add</a></td>
+                    </tr>
+                    Contador++;
+                }
+            </table>
+        </div>
+    </div>
+</div>
+

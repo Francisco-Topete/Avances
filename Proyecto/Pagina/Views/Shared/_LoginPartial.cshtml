@@ -7,9 +7,11 @@
 
     <ul class="nav navbar-nav mr-auto">
         <li class="nav-item">
-            @Html.ActionLink("Bienvenido, " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class="nav-link" })
+            @Html.ActionLink(User.Identity.GetUserName(), "Details", "Profile", routeValues: null, htmlAttributes: new { title = "Manage", @class="nav-link" })
         </li>
-        <li><a class="nav-item nav-link" href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+        <li class="nav-item">
+            <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesion</a>
+        </li>
     </ul>
     }
 }
