@@ -10,10 +10,12 @@ using Pagina.Models;
 
 namespace Pagina.Controllers
 {
+    [Authorize]
     public class TipoesController : Controller
     {
+        
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        
         // GET: Tipoes
         public ActionResult Index()
         {

@@ -9,15 +9,18 @@ using System.Web.Mvc;
 
 namespace Pagina.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class RolesController : Controller
     {
+        
         readonly ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
             var users = db.Users.ToList();
             return View(users);
         }
-
+        
         public ActionResult AddRoles(string id)
         {
             var user = db.Users.Find(id);

@@ -30,7 +30,6 @@ namespace Pagina.Controllers
 
             userdb.Name = PVM.Name;
             userdb.Description = PVM.Description;
-            userdb.Email = PVM.Email;
             userdb.Photo = PVM.Photo;
             db.SaveChanges();
 
