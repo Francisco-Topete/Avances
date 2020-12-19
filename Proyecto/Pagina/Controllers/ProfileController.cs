@@ -30,7 +30,8 @@ namespace Pagina.Controllers
 
             userdb.Name = PVM.Name;
             userdb.Description = PVM.Description;
-            userdb.Photo = PVM.Photo;
+            userdb.PhoneNumber = PVM.PhoneNumber;
+            userdb.PhoneNumberConfirmed = true;
             db.SaveChanges();
 
             return RedirectToAction("Details");

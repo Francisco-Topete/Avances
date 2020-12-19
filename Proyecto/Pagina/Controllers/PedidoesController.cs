@@ -30,7 +30,7 @@ namespace Pagina.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pedido pedido = db.Pedidos.Find(id);
+            var pedido = db.Pedidos.Include(p => p.Producto).FirstOrDefault(p => p.ID == id);
             if (pedido == null)
             {
                 return HttpNotFound();
@@ -103,7 +103,7 @@ namespace Pagina.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Pedido pedido = db.Pedidos.Find(id);
+            var pedido = db.Pedidos.Include(p => p.Producto).FirstOrDefault(p => p.ID == id);
             if (pedido == null)
             {
                 return HttpNotFound();

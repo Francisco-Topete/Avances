@@ -4,9 +4,7 @@
     ViewBag.Title = "Detalles";
 }
 
-<h2 class="titulo subtitulo t-crud">Detalles - Tipo</h2>
-
-<div class="detalles">
+<div>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -19,6 +17,6 @@
 
     </dl>
 </div>
-<p class="detalles">
+<p>
     @Html.ActionLink("Editar!", "Edit", new { id = Model.ID }, new { @class = "boton-tabla" })
 </p>

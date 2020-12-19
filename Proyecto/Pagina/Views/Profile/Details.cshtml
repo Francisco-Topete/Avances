@@ -1,70 +1,111 @@
 ﻿@model Pagina.Models.ApplicationUser
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Perfil";
 }
 
-<h2>Perfil</h2>
-
-<div class="container-fluid">
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <table class="table">
-                <tr>
-                    <td>Nombre: </td>
-                    <td>@Model.Name</td>
-                </tr>
-                <tr>
-                    <td>Email: </td>
-                    <td>@Model.Email</td>
-                </tr>
-                <tr>
-                    <td>Descripcion: </td>
-                    <td>@Model.Description</td>
-                </tr>
-                <tr>
-                    <td>Foto: </td>
-                    <td>
-                        <img src="~/Upload/@Model.Photo" class="rounded img-fluid"/>
-                        <form class="form-row" action="@Url.Action("Picture","Profile")" method="post" enctype="multipart/form-data">
-                            <input type="file" value="" name="pic" class="form-control" />
-                            <input type="submit" value="Guardar" class="form-control" />
-                        </form>
-                    </td>
-                </tr>
-            </table>
-            <button class="boton-tabla" data-toggle="modal" data-target="#exampleModal">Editar</button>
-
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+<div class="container emp-profile">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="profile-img">
+                <img src="~/Upload/@Model.Photo" class="rounded img-fluid" />
+                <form class="form-row" action="@Url.Action("Picture","Profile")" method="post" enctype="multipart/form-data">
+                    <input type="file" value="" name="pic" class="form-control" />
+                    <input type="submit" value="Guardar" class="form-control" />
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="profile-head">
+                <h5>
+                    @Model.UserName
+                </h5>
+                <h6>
+                    Usuario de Crystal+
+                </h6>
+                <br />
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>ID</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>@Model.Id</p>
+                            </div>
                         </div>
-                        <form action="@Url.Action("Details","Profile")" method="post">
-                            <div class="modal-body">
-
-                                <div class="form-group">
-                                    <label>Nombre</label>
-                                    <input name="Name" type="text" />
-                                </div>
-                                <div class="form-group">
-                                    <label>Descripcion</label>
-                                    <input name="Description" type="text" />
-                                </div>
-
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Nombre</label>
                             </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            <div class="col-md-6">
+                                <p>@Model.Name</p>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>@Model.Email</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Telefono</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>@Model.PhoneNumber</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Descripcion</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>@Model.Description</p>
+                            </div>
+                        </div>
+                    </div>        
                 </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button class="profile-edit-btn" data-toggle="modal" data-target="#exampleModal">Editar</button>
+        </div>
+    </div>    
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="@Url.Action("Details","Profile")" method="post">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input name="Name" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label>Numero de Telefono</label>
+                            <input name="PhoneNumber" type="text" />
+                        </div>
+                        <div class="form-group">
+                            <label>Descripcion</label>
+                            <input name="Description" type="text" />
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-

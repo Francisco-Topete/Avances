@@ -94,39 +94,99 @@ textarea {
 }
 
 table {
-    color: #333;
-    font-family: Helvetica, Arial, sans-serif;
-    width: 640px;
-    border-collapse: collapse;
-    border-spacing: 0;
-}
-
-td, th {
-    border: 1px solid; 
-    border-color: lightgray;
-    height: 30px;
-    transition: all 0.3s; 
+    font-family: "Arial";
+    background: #f5f5f5;
+    border-collapse: separate;
+    box-shadow: inset 0 1px 0 #fff;
+    font-size: 12px;
+    line-height: 24px;
+    margin: 30px auto;
+    text-align: left;
+    width: 800px;
 }
 
 th {
-    background-color: firebrick;
+    background: url(https://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#244cc4, #173282);
+    border-left: 1px solid #555;
+    border-right: 1px solid #777;
+    border-top: 1px solid #555;
+    border-bottom: 1px solid #333;
+    box-shadow: inset 0 1px 0 #999;
+    color: #fff;
     font-weight: bold;
-    color: white;
-    text-align: center;
+    padding: 10px 15px;
+    position: relative;
+    text-shadow: 0 1px 0 #000;
 }
+
+    th:after {
+        background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+        content: '';
+        display: block;
+        height: 25%;
+        left: 0;
+        margin: 1px 0 0 0;
+        position: absolute;
+        top: 25%;
+        width: 100%;
+    }
+
+    th:first-child {
+        border-left: 1px solid #777;
+        box-shadow: inset 1px 1px 0 #999;
+    }
+
+    th:last-child {
+        box-shadow: inset -1px 1px 0 #999;
+    }
 
 td {
-    text-align: center;
+    border-right: 1px solid #fff;
+    border-left: 1px solid #e8e8e8;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 10px 15px;
+    position: relative;
+    transition: all 150ms;
 }
 
+    td:first-child {
+        box-shadow: inset 1px 0 0 #fff;
+    }
 
-tr:nth-child(even) td {
-    background-color: lightsteelblue;
+    td:last-child {
+        border-right: 1px solid #e8e8e8;
+        box-shadow: inset -1px 0 0 #fff;
+    }
+
+tr {
+    background: url(https://jackrugile.com/images/misc/noise-diagonal.png);
 }
 
+    tr:nth-child(odd) td {
+        background: #f1f1f1 url(https://jackrugile.com/images/misc/noise-diagonal.png);
+    }
 
-tr:nth-child(odd) td {
-    background-color: lightpink;
+    tr:last-of-type td {
+        box-shadow: inset 0 -1px 0 #fff;
+    }
+
+        tr:last-of-type td:first-child {
+            box-shadow: inset 1px -1px 0 #fff;
+        }
+
+        tr:last-of-type td:last-child {
+            box-shadow: inset -1px -1px 0 #fff;
+        }
+
+tbody:hover td {
+    color: transparent;
+    text-shadow: 0 0 3px #aaa;
+}
+
+tbody:hover tr:hover td {
+    color: #444;
+    text-shadow: 0 1px 0 #fff;
 }
 
 .anadir 
@@ -140,24 +200,28 @@ tr:nth-child(odd) td {
     text-indent: -9999px;
 }
 
-.boton-tabla{
-    background-color: crimson;
+.boton-tabla {
+    background-color: #244cc4;
     padding: 4px;
-    border-color: red;
+    border-color: #173282;
     border-width: 2px;
     border-style: solid;
     color: white;
     border-radius: 10px;
     text-decoration: none;
     transition: 0.5s;
+    text-shadow: 0 !important;
+    box-shadow: 0 !important;
 }
 
     .boton-tabla:hover {
         transition: 0.5s;
-        background-color: firebrick;
-        border-color: crimson;
+        background-color: #173282;
+        border-color: #244cc4;
         color: antiquewhite;
         text-decoration: none;
+        text-shadow: 0 !important;
+        box-shadow: 0 !important;
     }
 
 .boton-crear {
@@ -269,4 +333,115 @@ tr:nth-child(odd) td {
     margin-left: auto;
     margin-right: auto;
     color: white;
+}
+
+.emp-profile {
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
+}
+
+.profile-img {
+    text-align: center;
+}
+
+    .profile-img img {
+        width: 70%;
+        height: 100%;
+    }
+
+    .profile-img .file {
+        position: relative;
+        overflow: hidden;
+        margin-top: -20%;
+        width: 70%;
+        border: none;
+        border-radius: 0;
+        font-size: 15px;
+        background: #212529b8;
+    }
+
+        .profile-img .file input {
+            position: absolute;
+            opacity: 0;
+            right: 0;
+            top: 0;
+        }
+
+.profile-head h5 {
+    color: #333;
+}
+
+.profile-head h6 {
+    color: #0062cc;
+}
+
+.profile-edit-btn {
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+
+.proile-rating {
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+
+    .proile-rating span {
+        color: #495057;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+.profile-head .nav-tabs {
+    margin-bottom: 5%;
+}
+
+    .profile-head .nav-tabs .nav-link {
+        font-weight: 600;
+        border: none;
+    }
+
+        .profile-head .nav-tabs .nav-link.active {
+            border: none;
+            border-bottom: 2px solid #0062cc;
+        }
+
+.profile-work {
+    padding: 14%;
+    margin-top: -15%;
+}
+
+    .profile-work p {
+        font-size: 12px;
+        color: #818182;
+        font-weight: 600;
+        margin-top: 10%;
+    }
+
+    .profile-work a {
+        text-decoration: none;
+        color: #495057;
+        font-weight: 600;
+        font-size: 14px;
+    }
+
+    .profile-work ul {
+        list-style: none;
+    }
+
+.profile-tab label {
+    font-weight: 600;
+}
+
+.profile-tab p {
+    font-weight: 600;
+    color: #0062cc;
 }

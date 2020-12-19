@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -14,9 +15,10 @@ namespace Pagina.Models
         [Display(Name ="Producto")]
         public int ProductoID { get; set; }
         [ForeignKey("ProductoID")]
-        [Display(Name = "Nombre del Producto")]
+        [DisplayName("Producto")]
         public Producto Producto { get; set; }
-
         public string Total { get; set; }
+
+        public ICollection<Producto> Productos { get; set; }
     }
 }

@@ -28,7 +28,7 @@
             @Html.DisplayFor(modelItem => item.Producto.Nombre)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Total)
+            $@Html.DisplayFor(modelItem => item.Total)
         </td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class = "boton-tabla" })
