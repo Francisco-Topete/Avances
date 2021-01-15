@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace Pagina.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class CrudController : Controller
     {
         // GET: Crud

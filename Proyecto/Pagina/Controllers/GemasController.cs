@@ -10,7 +10,7 @@ using Pagina.Models;
 
 namespace Pagina.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class GemasController : Controller
     {
 
@@ -37,18 +37,8 @@ namespace Pagina.Controllers
             return View(gema);
         }
 
-        // GET: Gemas/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Gemas/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Nombre")] Gema gema)
+        public ActionResult Create(Gema gema)
         {
             if (ModelState.IsValid)
             {
@@ -60,27 +50,8 @@ namespace Pagina.Controllers
             return View(gema);
         }
 
-        // GET: Gemas/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Gema gema = db.Gemas.Find(id);
-            if (gema == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gema);
-        }
-
-        // POST: Gemas/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nombre")] Gema gema)
+        public ActionResult Edit(Gema gema)
         {
             if (ModelState.IsValid)
             {
@@ -91,30 +62,25 @@ namespace Pagina.Controllers
             return View(gema);
         }
 
-        // GET: Gemas/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Gema gema = db.Gemas.Find(id);
-            if (gema == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gema);
-        }
-
-        // POST: Gemas/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(IEnumerable<int> ID)
         {
-            Gema gema = db.Gemas.Find(id);
-            db.Gemas.Remove(gema);
+            var gemas = db.Gemas.ToList();
+
+            foreach (var item in gemas)
+            {
+                foreach (var id in ID)
+                {
+                    if (id == item.ID)
+                    {
+                        var borrargema = db.Gemas.FirstOrDefault(p => p.ID == id);
+                        db.Gemas.Remove(borrargema);
+                    }
+                }
+            }
+
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index");          
         }
 
         protected override void Dispose(bool disposing)

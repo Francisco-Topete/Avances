@@ -17,11 +17,32 @@ namespace Pagina.Models
             return userIdentity;
         }
 
+
         public string Name { get; set; }
 
         public string Description { get; set; }
 
         public string Photo { get; set; }
+
+        public string PaymentMethod { get; set; }
+
+        public string PaymentName { get; set; }
+
+        public string PaymentExpDate { get; set; }
+
+        public string PaymentCCV { get; set; }
+
+        public string PaymentNumber { get; set; }
+
+        public bool PaymentSave { get; set; }
+
+        public string Address { get; set; }
+
+        public string Country { get; set; }
+
+        public string State { get; set; }
+
+        public string ZipCode { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

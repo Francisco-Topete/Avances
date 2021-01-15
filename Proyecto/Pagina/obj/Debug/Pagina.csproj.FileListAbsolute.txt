@@ -120,7 +120,6 @@ D:\asdsd\Avances\Proyecto\Pagina\bin\es\Microsoft.Owin.Security.Facebook.resourc
 D:\asdsd\Avances\Proyecto\Pagina\bin\es\Microsoft.Owin.Security.Google.resources.dll
 D:\asdsd\Avances\Proyecto\Pagina\bin\es\Microsoft.Owin.Security.Twitter.resources.dll
 D:\asdsd\Avances\Proyecto\Pagina\bin\es\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
-D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.csprojAssemblyReference.cache
 D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.csproj.CoreCompileInputs.cache
 D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.csproj.CopyComplete
 D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.dll
@@ -132,3 +131,7 @@ D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.Migrations.Updated.resources
 D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.Migrations.Updated1.resources
 D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.Migrations.Profile.resources
 D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.Migrations.Pedidoes.resources
+D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.Migrations.ProdImg.resources
+D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.Migrations.Pedidos.resources
+D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.Migrations.Payment.resources
+D:\asdsd\Avances\Proyecto\Pagina\obj\Debug\Pagina.csprojAssemblyReference.cache

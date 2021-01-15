@@ -1,0 +1,15 @@
+﻿body {
+}
+
+.img-fluid{
+    width: 90%;
+    height: 90%;
+    border-style: solid;
+    border-color: black;
+    border-width: 3px;
+}
+
+.container{
+    color: black;
+    font-family: 'Segoe UI';
+}

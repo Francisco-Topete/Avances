@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Payment";
+}
+
+<link href="~/Content/mdb.min.css" rel="stylesheet">
+
+<main>
+    <div class="container wow fadeIn">
+
+        <div class="row justify-content-center">
+
+            <!--Grid column-->
+            <div class="col-md-8 mb-4">
+
+                <!--Card-->
+                <div class="card">
+
+                    <!--Card content-->
+                    <form class="card-body" method="post" action="@Url.Action("Payment","Order")">
+                        <div class="md-form mb-5">
+                            <input type="text" name="Address" id="address" class="form-control" placeholder="Calle y/o colonia" required>
+                            <div class="invalid-feedback">
+                                Por favor ingrese su dirección.
+                            </div>
+                            <label for="address" style="margin-top:30px;">Dirección</label>
+                        </div>                       
+
+                        <!--Grid row-->
+                        <div class="row">
+
+                            <!--Grid column-->
+                            <div class="col-lg-4 col-md-12 mb-4">
+
+                                <label for="country">Pais</label>
+                                <select name="Country" class="custom-select d-block w-100" id="country" required>
+                                    <option value="">Elige...</option>
+                                    <option value="Mexico">México</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Por favor elige un pais.
+                                </div>
+
+                            </div>
+                            <!--Grid column-->
+                            <!--Grid column-->
+                            <div class="col-lg-4 col-md-6 mb-4">
+
+                                <label for="state">Estado</label>
+                                <select name="State" class="custom-select d-block w-100" id="state" required>
+                                    <option value="">Elige...</option>
+                                    <option value="Baja California">Baja California</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Por favor elige un estado.
+                                </div>
+
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-4">
+
+                                <label for="zip">Codigo postal</label>
+                                <input name="Zip" type="text" class="form-control" id="zip" placeholder="00000" required>
+                                <div class="invalid-feedback">
+                                    Por favor ingresa tu codigo postal.
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="d-block my-3">
+                            <div class="custom-control custom-radio">
+                                <input id="credit" name="PaymentMethod" value="Tarjeta de credito" type="radio" class="custom-control-input" checked required>
+                                <label class="custom-control-label" for="credit">Tarjeta de credito</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="debit" name="PaymentMethod" type="radio" value="Tarjeta de debito" class="custom-control-input" required>
+                                <label class="custom-control-label" for="debit">Tarjeta de debito</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="paypal" name="PaymentMethod" type="radio" value="Paypal" class="custom-control-input" required>
+                                <label class="custom-control-label" for="paypal">Paypal</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="cc-name">Nombre</label>
+                                <input name="PaymentName" type="text" class="form-control" id="cc-name" placeholder="" required>
+                                <small class="text-muted">Titular de tarjeta</small>
+                                <div class="invalid-feedback">
+                                    Por favor ingrese el titular.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="cc-number">Numero de tarjeta</label>
+                                <input name="PaymentNumber" type="text" class="form-control" id="cc-number" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Por favor ingrese el numero de tarjeta.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label for="cc-expiration">Fecha de expiración</label>
+                                <input name="PaymentExpDate" type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Por favor ingrese la fecha de expiración.
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label for="cc-expiration">CVV</label>
+                                <input name="PaymentCCV" type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                                <div class="invalid-feedback">
+                                    Por favor ingrese el CCV.
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+
+                        <div class="custom-control custom-checkbox">
+                            <input name="PaymentSave" type="checkbox" value="true" class="custom-control-input" id="save-info">
+                            <input name="PaymentSave" type="hidden" value="false" />
+                            <label class="custom-control-label" for="save-info">Guardar información de pago</label>
+                        </div>
+
+                        <hr class="mb-4">
+                        <button class="btn btn-primary btn-lg btn-block" type="submit">Continuar con el pago</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

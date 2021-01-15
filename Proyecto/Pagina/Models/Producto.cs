@@ -21,7 +21,6 @@ namespace Pagina.Models
         [DisplayName("Tipo")]
         public Tipo Tipo { get; set; }
 
-        
         public int GemaID { get; set; }
         [ForeignKey("GemaID")]
         [DisplayName("Gema")]
@@ -29,6 +28,8 @@ namespace Pagina.Models
 
         [Display(Name = "Precio")]
         public double Precio { get; set; }
+
+        public string Imagen { get; set; }
 
         public ICollection<Pedido> Pedidos { get; set; }
         public ICollection<Gema> Gemas { get; set; }

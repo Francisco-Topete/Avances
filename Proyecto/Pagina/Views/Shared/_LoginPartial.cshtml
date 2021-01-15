@@ -1,24 +1,52 @@
 ﻿@using Microsoft.AspNet.Identity
+@model Pagina.Models.ApplicationUser
 
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "form-inline" }))
     {
         @Html.AntiForgeryToken()
-        <li class="nav-item">
-            @Html.ActionLink(User.Identity.GetUserName(), "Details", "Profile", routeValues: null, htmlAttributes: new { title = "Manage", @class = "nav-link" })
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Cerrar Sesion</a>
-        </li>
+
+        <ul class="navbar-nav mr-auto my-auto">
+            <li class="nav-item mr-auto">
+                <a class="nav-link" href="@Url.Action("Details", "Profile", routeValues: null)">
+                    <img src="~/Upload/@Model.Photo" class="img-profile rounded-circle" />
+                    @User.Identity.GetUserName()
+                </a>
+            </li>
+            <li class="nav-item mr-auto">
+                <a class="nav-link" href="#logoutModal" data-toggle="modal">Cerrar Sesion</a>
+            </li>
+        </ul>
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cerrar sesion?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Estas seguro de que quieres cerrar sesión?</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                        <a class="btn btn-primary" href="javascript:document.getElementById('logoutForm').submit()">Si</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
 }
 else
 {
-    <li class="nav-item">
-        @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })
-    </li>
-    <li class="nav-item">
-        @Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })
-    </li>
+    <ul class="navbar-nav mr-auto my-auto">
+        <li class="nav-item">
+            @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "nav-link" })
+        </li>
+        <li class="nav-item">
+            @Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav-link" })
+        </li>
+    </ul>
 }

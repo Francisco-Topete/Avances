@@ -4,27 +4,30 @@
     ViewBag.Title = "Detalles";
 }
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Producto.Nombre)
-        </dt>
+<link href="~/Content/details.css" rel="stylesheet">
 
-        <dd>
-            @Html.DisplayFor(model => model.Producto.Nombre)
-        </dd>
+<div class="container">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Total)
-        </dt>
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">
+        <b>Pedido #@Html.DisplayFor(model => model.ID)</b>
+    </h1>
 
-        <dd>
-            $@Html.DisplayFor(model => model.Total)
-        </dd>
+    <!-- Portfolio Item Row -->
+    <div class="row">
 
-    </dl>
+        <div class="col-md-8">
+            <img class="img-fluid" src="~/Upload/Productoes/@Model.Producto.Imagen" alt="">
+        </div>
+
+        <div class="col-md-4">           
+            <h3 class="my-3"><b>Detalles</b></h3>
+            <ul>
+                <li><b>@Html.DisplayNameFor(model => model.Producto.Nombre):</b> @Html.DisplayFor(model => model.Producto.Nombre)</li>
+                <li><b>Cliente:</b> @Html.DisplayFor(model => model.Cliente.UserName)</li>
+                <li><b>@Html.DisplayNameFor(model => model.Total):</b> $@Html.DisplayFor(model => model.Total)</li>
+                <li><b>@Html.DisplayNameFor(model => model.Estado):</b> @Model.Estado</li>
+            </ul>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Editar!", "Edit", new { id = Model.ID }, new { @class = "boton-tabla" })
-</p>

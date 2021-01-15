@@ -10,7 +10,7 @@ using Pagina.Models;
 
 namespace Pagina.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class TipoesController : Controller
     {
         
@@ -47,7 +47,6 @@ namespace Pagina.Controllers
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Nombre")] Tipo tipo)
         {
             if (ModelState.IsValid)
@@ -60,27 +59,8 @@ namespace Pagina.Controllers
             return View(tipo);
         }
 
-        // GET: Tipoes/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Tipo tipo = db.Tipos.Find(id);
-            if (tipo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tipo);
-        }
-
-        // POST: Tipoes/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Nombre")] Tipo tipo)
+        public ActionResult Edit(Tipo tipo)
         {
             if (ModelState.IsValid)
             {
@@ -91,28 +71,24 @@ namespace Pagina.Controllers
             return View(tipo);
         }
 
-        // GET: Tipoes/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Tipo tipo = db.Tipos.Find(id);
-            if (tipo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(tipo);
-        }
-
-        // POST: Tipoes/Delete/5
+       
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(IEnumerable<int> ID)
         {
-            Tipo tipo = db.Tipos.Find(id);
-            db.Tipos.Remove(tipo);
+            var tipos = db.Tipos.ToList();
+
+            foreach (var item in tipos)
+            {
+                foreach (var id in ID)
+                {
+                    if (id == item.ID)
+                    {
+                        var borrartipo = db.Tipos.FirstOrDefault(p => p.ID == id);
+                        db.Tipos.Remove(borrartipo);
+                    }
+                }
+            }
+
             db.SaveChanges();
             return RedirectToAction("Index");
         }

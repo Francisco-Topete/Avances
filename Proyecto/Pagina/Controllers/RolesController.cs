@@ -15,9 +15,20 @@ namespace Pagina.Controllers
         
         readonly ApplicationDbContext db = new ApplicationDbContext();
 
-        public ActionResult Index()
+        public ActionResult Index(UserViewModel UVM)
         {
-            var users = db.Users.ToList();
+            var users = (from user in db.Users
+                                  from userRole in user.Roles
+                                  join role in db.Roles on userRole.RoleId equals
+                                  role.Id
+                                  select new UserViewModel()
+                                  {
+                                      ID = user.Id,
+                                      Username = user.UserName,
+                                      Email = user.Email,
+                                      Role = role.Name
+                                  }).ToList();
+
             return View(users);
         }
         
@@ -31,16 +42,16 @@ namespace Pagina.Controllers
         public ActionResult AddRoles(UserViewModel UVM)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(db));
-            var userRol = userManager.GetRoles(UVM.UserId);
+            var userRol = userManager.GetRoles(UVM.ID);
 
             if (userRol.Count > 0)
             {
-                userManager.RemoveFromRoles(UVM.UserId,userRol.ToArray());
-                userManager.AddToRole(UVM.UserId,UVM.UserRol);
+                userManager.RemoveFromRoles(UVM.ID,userRol.ToArray());
+                userManager.AddToRole(UVM.ID,UVM.Role);
             }
             else
             {
-                userManager.AddToRole(UVM.UserId, UVM.UserRol);
+                userManager.AddToRole(UVM.ID, UVM.Role);
             }
 
             return RedirectToAction("Index");

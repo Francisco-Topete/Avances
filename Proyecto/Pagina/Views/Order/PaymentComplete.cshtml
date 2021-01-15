@@ -1,0 +1,59 @@
+﻿@model Pagina.Models.OrderViewModels
+
+@{
+    ViewBag.Title = "PaymentComplete";
+}
+
+<link href="~/Content/mdb.min.css" rel="stylesheet">
+
+<main>
+    <div class="container wow fadeIn">
+
+        <h2 class="my-5 h2 text-center">Recibo</h2>
+
+        <div class="row">
+            <div class="col-md-12 mb-4">
+
+                <!-- Heading -->
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted">Articulos comprados</span>
+                </h4>
+
+                <!-- Cart -->
+                <ul class="list-group mb-3 z-depth-1">
+                    @{
+                        double total = 0;
+
+                        foreach (var item in Model.Pedidos)
+                        {
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div style="width:60%;">
+                                    <img src="~/Upload/Productoes/@item.Producto.Imagen" width="48" height="48" style="float:left;margin-right:20px;" />
+                                    <h6 class="my-0">@item.Producto.Nombre</h6>
+                                    <small class="text-muted">ID: #@item.ID</small>
+                                </div>
+                                <span class="text-muted">
+                                    $ @item.Total
+                                </span>
+                            </li>
+
+                            total += item.Total;
+                        }
+
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total</span>
+                            <strong>$@total</strong>
+                        </li>
+
+                        <li class="list-group-item d-flex justify-content-center lh-condensed">
+                            <span class="text-muted">
+                                Felicidades por tu compra! En los siguientes dias te llegaran estos articulos.
+                            </span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+

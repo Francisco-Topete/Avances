@@ -13,7 +13,7 @@ namespace Pagina.Controllers
         readonly ApplicationDbContext db = new ApplicationDbContext();
         // GET: LoginPartial
         [ChildActionOnly]
-        public ActionResult Imagen()
+        public ActionResult _LoginPartial()
         {
             var ID = User.Identity.GetUserId();
             var user = db.Users.Find(ID);

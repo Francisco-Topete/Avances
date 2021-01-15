@@ -17,8 +17,16 @@ namespace Pagina.Models
         [ForeignKey("ProductoID")]
         [DisplayName("Producto")]
         public Producto Producto { get; set; }
-        public string Total { get; set; }
+
+        public string ClienteID { get; set; }
+        [ForeignKey("ClienteID")]
+        [DisplayName("Cliente")]
+        public ApplicationUser Cliente { get; set; }
+        public double Total { get; set; }
+
+        public string Estado { get; set; }
 
         public ICollection<Producto> Productos { get; set; }
+        public ICollection<ApplicationUser> Clientes { get; set; }
     }
 }

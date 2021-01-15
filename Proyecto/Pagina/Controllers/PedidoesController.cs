@@ -1,26 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Pagina.Models;
+using System.Collections.ObjectModel;
 
 namespace Pagina.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrador")]
     public class PedidoesController : Controller
     {
-
-        private ApplicationDbContext db = new ApplicationDbContext();
-
+        public ApplicationDbContext db = new ApplicationDbContext();
+        
         // GET: Pedidoes
-        public ActionResult Index()
+        public ActionResult Index(PedidosViewModel PEVM)
         {
-            var pedidos = db.Pedidos.Include(p => p.Producto);
-            return View(pedidos.ToList());
+            var usuarios = db.Users.ToList();
+            var pedidos = db.Pedidos.Include(p => p.Producto).ToList();
+            var productos = db.Productos.ToList();       
+            PEVM.Productos = productos;
+            PEVM.Pedidos = pedidos;
+            PEVM.Clientes = usuarios;
+            return View(PEVM);
         }
 
         // GET: Pedidoes/Details/5
@@ -30,7 +37,7 @@ namespace Pagina.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var pedido = db.Pedidos.Include(p => p.Producto).FirstOrDefault(p => p.ID == id);
+            var pedido = db.Pedidos.Include(p => p.Producto).Include(p => p.Cliente).FirstOrDefault(p => p.ID == id);
             if (pedido == null)
             {
                 return HttpNotFound();
@@ -49,8 +56,7 @@ namespace Pagina.Controllers
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,ProductoID,Total")] Pedido pedido)
+        public ActionResult Create(Pedido pedido)
         {
             if (ModelState.IsValid)
             {
@@ -63,28 +69,8 @@ namespace Pagina.Controllers
             return View(pedido);
         }
 
-        // GET: Pedidoes/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Pedido pedido = db.Pedidos.Find(id);
-            if (pedido == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.ProductoID = new SelectList(db.Productos, "ID", "Nombre", pedido.ProductoID);
-            return View(pedido);
-        }
-
-        // POST: Pedidoes/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
-        // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,ProductoID,Total")] Pedido pedido)
+        public ActionResult Edit(Pedido pedido)
         {
             if (ModelState.IsValid)
             {
@@ -96,30 +82,27 @@ namespace Pagina.Controllers
             return View(pedido);
         }
 
-        // GET: Pedidoes/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var pedido = db.Pedidos.Include(p => p.Producto).FirstOrDefault(p => p.ID == id);
-            if (pedido == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pedido);
-        }
 
         // POST: Pedidoes/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(IEnumerable<int> ID)
         {
-            Pedido pedido = db.Pedidos.Find(id);
-            db.Pedidos.Remove(pedido);
+            var pedidos = db.Pedidos.ToList();
+
+            foreach (var item in pedidos)
+            {
+                foreach (var id in ID)
+                {
+                    if (id == item.ID)
+                    {
+                        var borrarpedido = db.Pedidos.FirstOrDefault(p => p.ID == id);
+                        db.Pedidos.Remove(borrarpedido);
+                    }
+                }
+            }
+
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index");            
         }
 
         protected override void Dispose(bool disposing)

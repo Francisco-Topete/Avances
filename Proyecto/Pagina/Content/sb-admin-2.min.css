@@ -10014,13 +10014,13 @@ a:focus {
 }
 
 .bg-gradient-primary {
-    background-color: #5e1224;
-    background-image: linear-gradient(180deg,#4e73df 10%,#224abe 100%);
+    background-color: #4e73df;
+    background-image: linear-gradient(180deg,#6f0707 10%,#000000 100%);
     background-size: cover
 }
 
 .bg-gradient-secondary {
-    background-color: #5e1224;
+    background-color: #858796;
     background-image: linear-gradient(180deg,#858796 10%,#60616f 100%);
     background-size: cover
 }
@@ -10990,19 +10990,19 @@ a:focus {
 }
 
 .bg-login-image {
-    background: url(https://i.pinimg.com/originals/9a/b0/ac/9ab0acc5f9a69b88d3a4fc42ad1dcc64.jpg);
+    background: url(/Upload/Assets/login.png);
     background-position: center;
     background-size: cover
 }
 
 .bg-register-image {
-    background: url(https://ak.picdn.net/shutterstock/videos/7034680/thumb/1.jpg);
+    background: url(/Upload/Assets/register.jpg);
     background-position: center;
     background-size: cover
 }
 
 .bg-password-image {
-    background: url(https://source.unsplash.com/oWTW-jNGl9I/600x800);
+    background: url(/Upload/Assets/password.jpg);
     background-position: center;
     background-size: cover
 }

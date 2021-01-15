@@ -1,0 +1,107 @@
+﻿@model Pagina.Models.Producto
+
+<title>@Model.Nombre</title>
+
+<link href="~/Content/mdb.min.css" rel="stylesheet">
+
+<main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+
+        <!--Grid row-->
+        <div class="row wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+
+                <img src="~/Upload/Productoes/@Model.Imagen" class="img-fluid" alt="">
+
+            </div>
+            <!--Grid column-->
+            <!--Grid column-->
+            <div class="col-md-6 mb-4">
+
+                <!--Content-->
+                <div class="p-4">
+
+                    <div class="mb-3">
+                        <a href="">
+                            <span class="badge purple mr-1">De @Model.Gema.Nombre</span>
+                        </a>
+                        <a href="">
+                            <span class="badge blue mr-1">@Model.Tipo.Nombre</span>
+                        </a>
+                    </div>
+                    @{double precioInflado = Model.Precio + 500;}
+                    <p class="lead">
+                        <span class="mr-1">
+                            <del>$ @precioInflado</del>
+                        </span>
+                        <span>$ @Model.Precio</span>
+                    </p>
+
+                    <p class="lead font-weight-bold">@Model.Nombre</p>
+
+                    <p>
+                        @Model.Descripcion
+                    </p>
+                    <br /><br /><br />
+
+                    <button data-toggle="modal" data-target="#exampleModal" class="btn btn-primary btn-md my-0 p ml-auto">
+                        Añadir al carro
+                        <i class="fas fa-shopping-cart ml-1"></i>
+                    </button>
+                </div>
+                <!--Content-->
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+        <hr>
+
+        <!--Grid row-->
+        <div class="row d-flex justify-content-center wow fadeIn">
+
+            <!--Grid column-->
+            <div class="col-md-6 text-center">
+
+                <h4 class="my-4 h4">Detalles adicionales</h4>
+
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus suscipit modi sapiente illo soluta odit
+                    voluptates,
+                    quibusdam officia. Neque quibusdam quas a quis porro? Molestias illo neque eum in laborum.
+                </p>
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir a tu carrito?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="@Url.Action("Encargo","Order", new { idp = Model.ID })" method="post" name="order" class="d-flex justify-content-left">
+                    <input value=1 name="amount" type="hidden" />
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-primary">Si</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript" src="~/Scripts/mdb.min.js"></script>
+<script type="text/javascript">
+    new WOW().init();</script>

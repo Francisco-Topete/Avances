@@ -1,45 +1,223 @@
-﻿@model IEnumerable<Pagina.Models.Producto>
+﻿@model Pagina.Models.ProductoesViewModel
 
 @{
     ViewBag.Title = "CRUD";
 }
 
-<h2 class="titulo subtitulo t-crud">Productos!</h2>
+<link href="~/Content/crudStyles.css" rel="stylesheet">
 
-@if(User.IsInRole("Administrador"))
+<div class="container-xl">
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <h2><b>Productos</b></h2>
+                    </div>
+                    <div class="col-sm-6">
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <a href="#createProductoesModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i><span></span></a>
+                            <a href="#deleteProductoesModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i><span></span></a>
+                        } 
+                    </div>
+                </div>
+            </div>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>
+                            <span class="custom-checkbox">
+                                <input type="checkbox" id="selectAll">
+                                <label for="selectAll"></label>
+                            </span>
+                        </th>
+                        <th>@Html.DisplayNameFor(model => model.Producto.Nombre)</th>
+                        <th>@Html.DisplayNameFor(model => model.Producto.Tipo.Nombre)</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int contador = 0;
+                    }
+
+                    @foreach (var item in Model.Productos)
+                    {
+                        var modaledit = "#editProductoesModal" + contador.ToString();
+                        var checkbox = "checkbox" + contador.ToString();
+                        <tr>
+                            <td>
+                                <span class="custom-checkbox">
+                                    <input type="checkbox" id="@checkbox" value="@item.ID" name="ID" form="delete">
+                                    <label for="@checkbox"></label>
+                                </span>
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Tipo.Nombre)</td>
+                            <td>
+                                <a href="@modaledit" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="@Url.Action("Details", "Productoes", new { id = item.ID })" class="delete"><i class="material-icons" data-toggle="tooltip" title="Detalles">&#xf1c3;</i></a>
+                            </td>
+                        </tr>
+
+                        contador++;
+                    }
+                </tbody>
+            </table>           
+        </div>
+    </div>
+</div>
+
+@{ contador = 0;}
+
+@foreach (var item in Model.Productos)
 {
-    <p>
-        @Html.ActionLink("Nuevo...", "Create",null,new { @class="anadir" })
-    </p>
+    var modaledit = "editProductoesModal" + contador.ToString();
+
+    <div id="@modaledit" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="post" action="@Url.Action("Edit","Productoes")" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+                    <div class="modal-header">
+                        <h4 class="modal-title">Editar Producto (#@item.ID)</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="ID" value="@item.ID" />
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Producto.Nombre)</label>
+                            <input type="text" name="Nombre" class="form-control" value="@item.Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Producto.Descripcion)</label>
+                            <textarea name="Descripcion" class="form-control" required>@item.Descripcion</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Producto.Precio)</label>
+                            <input type="number" name="Precio" class="form-control" value="@item.Precio">
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Producto.Gema.Nombre)</label>
+                            <select name="GemaID" class="form-control">
+                                @foreach (var gema in Model.Gemas)
+                                {
+                                    if (gema.ID == item.Gema.ID)
+                                    {
+                                        <option value="@gema.ID" selected>@gema.Nombre</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@gema.ID">@gema.Nombre</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Producto.Tipo.Nombre)</label>
+                            <select name="TipoID" class="form-control">
+                                @foreach (var tipo in Model.Tipos)
+                                {
+                                    if (tipo.ID == item.Tipo.ID)
+                                    {
+                                        <option value="@tipo.ID" selected>@tipo.Nombre</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@tipo.ID">@tipo.Nombre</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>@Html.DisplayNameFor(model => model.Producto.Imagen)</label>
+                            <input type="file" value="" name="img" class="form-control" required />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                        <input type="submit" class="btn btn-info" value="Aplicar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    contador++;
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Tipo.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>>
-        <th>
-            Acciones
-        </th>
-    </tr>
+<div id="createProductoesModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="@Url.Action("Create","Productoes")" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title">Crear Producto</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">                    
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(model => model.Producto.Nombre)</label>
+                        <input type="text" name="Nombre" class="form-control" placeholder="Nombre">
+                    </div>
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(model => model.Producto.Descripcion)</label>
+                        <textarea name="Descripcion" class="form-control" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(model => model.Producto.Precio)</label>
+                        <input type="number" name="Precio" class="form-control" placeholder="0">
+                    </div>
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(model => model.Producto.Gema.Nombre)</label>
+                        <select name="GemaID" class="form-control">
+                            @foreach (var gema in Model.Gemas)
+                            {
+                                <option value="@gema.ID">@gema.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(model => model.Producto.Tipo.Nombre)</label>
+                        <select name="TipoID" class="form-control">
+                            @foreach (var tipo in Model.Tipos)
+                            {
+                                <option value="@tipo.ID">@tipo.Nombre</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>@Html.DisplayNameFor(model => model.Producto.Imagen)</label>
+                        <input type="file" value="" name="img" class="form-control" required />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="submit" class="btn btn-info" value="Crear">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tipo.Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.ID }, new { @class="boton-tabla" }) 
-            @Html.ActionLink("Detalles", "Details", new { id = item.ID }, new { @class = "boton-tabla" }) 
-            @Html.ActionLink("Borrar", "Delete", new { id = item.ID }, new { @class = "boton-tabla" })
-        </td>
-    </tr>
-}
-
-</table>
+<!-- Delete Modal HTML -->
+<div id="deleteProductoesModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form id="delete" method="post" action="@Url.Action("Delete","Productoes")" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h4 class="modal-title">Borrar Producto(s)</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Seguro que quieres borrar los productos seleccionados?</p>
+                    <p class="text-warning"><small>Esto no se puede deshacer.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                    <input type="submit" class="btn btn-danger" value="Borrar">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,5 @@
+D:\asdsd\Avances\Proyecto\PLib\bin\Debug\PLib.dll
+D:\asdsd\Avances\Proyecto\PLib\bin\Debug\PLib.pdb
+D:\asdsd\Avances\Proyecto\PLib\obj\Debug\PLib.csproj.CoreCompileInputs.cache
+D:\asdsd\Avances\Proyecto\PLib\obj\Debug\PLib.dll
+D:\asdsd\Avances\Proyecto\PLib\obj\Debug\PLib.pdb

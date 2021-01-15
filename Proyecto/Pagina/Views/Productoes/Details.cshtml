@@ -4,51 +4,32 @@
     ViewBag.Title = "Detalles";
 }
 
-<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Gema.Nombre)
-        </dt>
+<link href="~/Content/details.css" rel="stylesheet">
 
-        <dd>
-            @Html.DisplayFor(model => model.Gema.Nombre)
-        </dd>
+<div class="container">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Tipo.Nombre)
-        </dt>
+    <!-- Portfolio Item Heading -->
+    <h1 class="my-4">
+        <b>@Html.DisplayFor(model => model.Nombre)</b> -
+        <small><i>ID#@Html.DisplayFor(model => model.ID)</i></small>
+    </h1>
 
-        <dd>
-            @Html.DisplayFor(model => model.Tipo.Nombre)
-        </dd>
+    <!-- Portfolio Item Row -->
+    <div class="row">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+        <div class="col-md-8">
+            <img class="img-fluid" src="~/Upload/Productoes/@Model.Imagen" alt="">
+        </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Precio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Precio)
-        </dd>
-
-    </dl>
+        <div class="col-md-4">
+            <h3 class="my-3"><b>@Html.DisplayNameFor(model => model.Descripcion)</b></h3>
+            <p>@Html.DisplayFor(model => model.Descripcion)</p>
+            <h3 class="my-3"><b>Detalles</b></h3>
+            <ul>
+                <li>@Html.DisplayNameFor(model => model.Precio): $@Html.DisplayFor(model => model.Precio)</li>
+                <li>@Html.DisplayNameFor(model => model.Tipo.Nombre): @Html.DisplayFor(model => model.Tipo.Nombre)</li>
+                <li>@Html.DisplayNameFor(model => model.Gema.Nombre): @Html.DisplayFor(model => model.Gema.Nombre)</li>
+            </ul>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Editar!", "Edit", new { id = Model.ID }, new { @class = "boton-tabla" })
-</p>
