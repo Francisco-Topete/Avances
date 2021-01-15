@@ -60,5 +60,38 @@ namespace Pagina.Controllers
 
             return RedirectToAction("Details");
         }
+
+        public ActionResult PaymentMethod()
+        {
+            var ID = User.Identity.GetUserId();
+            var user = db.Users.Find(ID);
+            return View(user);
+        }
+
+        public ActionResult History(OrderViewModels OVM)
+        {
+            var ID = User.Identity.GetUserId();
+            var user = db.Users.Find(ID);
+            var pedidos = db.Pedidos.Include(p => p.Producto).Where(p => p.ClienteID == ID).Where(p => p.Estado == "Comprado");
+
+            OVM.Usuario = user;
+            OVM.Pedidos = pedidos.ToList();
+
+            return View(OVM);
+        }
+
+        public ActionResult DeleteMethod()
+        {
+            var ID = User.Identity.GetUserId();
+            var user = db.Users.Find(ID);
+            user.PaymentSave = false;
+            user.PaymentNumber = "";
+            user.PaymentName = "";
+            user.PaymentMethod = "";
+            user.PaymentExpDate = "";
+            user.PaymentCCV = "";
+            db.SaveChanges();
+            return RedirectToAction("PaymentMethod");
+        }
     }
 }

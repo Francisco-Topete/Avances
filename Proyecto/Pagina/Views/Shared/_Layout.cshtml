@@ -108,6 +108,13 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages"
                      data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <h6 class="collapse-header">Menu</h6>
+                            <a class="collapse-item" href="@Url.Action("History","Profile")">Historial de compras</a>
+                            <a class="collapse-item" href="@Url.Action("PaymentMethod","Profile")">Metodo de pago</a>
+                            <div class="collapse-divider"></div>
+                        }
                         <h6 class="collapse-header">Contacto:</h6>
                         <a class="collapse-item" href="@Url.Action("About","Home")">Sobre nosotros</a>
                         <a class="collapse-item" href="@Url.Action("Contact","Home")">Información de contacto</a>

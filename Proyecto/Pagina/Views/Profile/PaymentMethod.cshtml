@@ -1,0 +1,57 @@
+﻿@model Pagina.Models.ApplicationUser
+@{
+    ViewBag.Title = "Metodo de pago";
+}
+
+<link href="~/Content/payment.css" rel="stylesheet">
+
+<section>
+    <div class="container py-5">
+        <div class="row text-center align-items-end">
+            <!-- Pricing Table-->
+            <div class="col-lg-12 mb-5 mb-lg-0">
+                <div class="bg-white p-5 rounded-lg shadow">
+                    <h1 class="h6 text-uppercase font-weight-bold mb-4">Metodo de pago</h1>
+
+                    @{ if (Model.PaymentNumber != "")
+                        {
+                            <h2 class="h1 font-weight-bold">@Model.PaymentMethod</h2>
+
+                            <div class="custom-separator my-4 mx-auto bg-primary"></div>
+
+                            <ul class="list-unstyled my-5 text-small text-left">
+                                <li class="mb-3">
+                                    <i class="fa fa-arrow-right mr-2 text-primary"></i><b>Titular:</b> @Model.PaymentName
+                                </li>
+
+                                @{
+                                    string Numero = "****-****-****-" + Model.PaymentNumber.Substring(12);
+                                    string CCV = "**" + Model.PaymentCCV.Substring(2);
+                                }
+
+                                <li class="mb-3">
+                                    <i class="fa fa-arrow-right mr-2 text-primary"></i><b>Numero:</b> @Numero
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fa fa-arrow-right mr-2 text-primary"></i><b>CCV:</b> @CCV
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fa fa-arrow-right mr-2 text-primary"></i><b>Fecha de expiración:</b> @Model.PaymentExpDate
+                                </li>
+                            </ul>
+                            <a href="@Url.Action("DeleteMethod","Profile")" class="btn btn-primary btn-block p-2 shadow rounded-pill">Borrar</a>
+                        }
+                        else
+                        {
+                            <h2 class="h1 font-weight-bold">No tienes un metodo de pago asociado a tu cuenta</h2>
+                            <div class="custom-separator my-4 mx-auto bg-primary"></div>
+                        }
+                    }
+                </div>
+            </div>
+            <!-- END -->
+           
+        </div>
+    </div>
+</section>
+

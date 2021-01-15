@@ -1,0 +1,71 @@
+﻿@model Pagina.Models.OrderViewModels
+@{
+    ViewBag.Title = "Historial";
+    double total = 0;
+}
+
+<link href="~/Content/mdb.min.css" rel="stylesheet">
+
+<main>
+    <div class="container wow fadeIn">
+
+        <h2 class="my-5 h2 text-center">Historial</h2>
+
+        <div class="row">
+            <div class="col-md-12 mb-4">
+
+                <!-- Heading -->
+                <h4 class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="text-muted"></span>
+                    <span class="badge badge-secondary badge-pill">@Model.Pedidos.Count()</span>
+                </h4>
+
+                <!-- Cart -->
+                <ul class="list-group mb-3 z-depth-1">
+                    @{
+                        if (Model.Pedidos.Count >= 1)
+                        {
+                            foreach (var item in Model.Pedidos)
+                            {
+                                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                    <div style="width:60%;">
+                                        <img src="~/Upload/Productoes/@item.Producto.Imagen" width="48" height="48" style="float:left;margin-right:20px;" />
+                                        <h6 class="my-0">@item.Producto.Nombre</h6>
+                                        <small class="text-muted">ID: #@item.ID</small>
+                                    </div>
+                                    <span class="text-muted">
+                                        $ @item.Total
+                                    </span>
+                                </li>
+
+                                total += item.Total;
+                            }
+
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Total gastado</span>
+                                <strong>$@total</strong>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="list-group-item d-flex justify-content-center lh-condensed">
+                                <span class="text-muted">
+                                    Parece que no has comprado nada!
+                                </span>
+                            </li>
+
+                        }
+                    }
+                </ul>
+
+            </div>
+            <!--Grid column-->
+
+        </div>
+        <!--Grid row-->
+
+    </div>
+</main>
+
+
+
